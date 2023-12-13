@@ -35,7 +35,7 @@ class SearchActivity : OnClickListener, AppCompatActivity() {
         this.sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
         this.isLoggedIn = this.sharedPreferences.getString("active_user", "") != ""
         if (this.isLoggedIn == true) {
-            this.userType = gson.fromJson(this.sharedPreferences.getString("active_user", ""), User::class.java ).email
+            this.userType = gson.fromJson(this.sharedPreferences.getString("active_user", ""), User::class.java ).userType
 }
         setContentView(this.binding.root)
 
