@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "969161292104",
+    "firebase_url": "https://fallwinter2024-d7be9-default-rtdb.firebaseio.com",
+    "project_id": "fallwinter2024-d7be9",
+    "storage_bucket": "fallwinter2024-d7be9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969161292104:android:aaa357b45dcb3870c5db7d",
+        "android_client_info": {
+          "package_name": "com.example.countries_amal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwJdGzGlJofbC1f-ezlYuuuFDcdW9LFQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969161292104:android:e4133b4e39037732c5db7d",
+        "android_client_info": {
+          "package_name": "com.example.session_one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwJdGzGlJofbC1f-ezlYuuuFDcdW9LFQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969161292104:android:c8d9c2180330f25ec5db7d",
+        "android_client_info": {
+          "package_name": "com.jk.share"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwJdGzGlJofbC1f-ezlYuuuFDcdW9LFQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

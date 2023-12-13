@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PropertyViewActivity">
+
+    <!-- Header -->
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="fill">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Property Image -->
+            <ImageView
+                android:id="@+id/propertyImage"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/house" />
+
+            <!-- Property Details -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="45dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/availability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/text_shape"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="#FFFFFF"
+                android:textFontWeight="500"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="Available" />
+
+                <TextView
+                    android:id="@+id/propertyBeds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="#FF5733"
+                android:layout_marginTop="2dp"
+                android:textFontWeight="500"
+                android:text="2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#7B68EE"
+                android:fontFamily="@font/poppins"
+                android:textFontWeight="500"
+                android:text=" Beds" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="|" />
+
+                <TextView
+                    android:id="@+id/propertyBaths"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:textColor="#00CED1"
+                android:fontFamily="@font/poppins"
+                android:layout_marginTop="2dp"
+                android:textFontWeight="500"
+                android:text="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:textColor="#8A2BE2"
+                android:fontFamily="@font/poppins"
+                android:textFontWeight="500"
+                android:layout_marginTop="2dp"
+                android:text=" Bath" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="|" />
+
+                <TextView
+                    android:id="@+id/propertySquareFoot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:textColor="#FF4500"
+                android:text="0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:textColor="#32CD32"
+                android:fontFamily="@font/poppins"
+                android:layout_marginTop="2dp"
+                android:textFontWeight="500"
+                android:text=" sq.ft" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="|" />
+
+                <TextView
+                    android:id="@+id/propertyType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:textColor="#8B0000"
+                android:text="Condo" />
+            </LinearLayout>
+
+
+            <!-- Code Name -->
+            <TextView
+                android:id="@+id/codeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Barrington Terrace"
+                android:layout_marginTop="15dp"
+                android:textSize="35sp"
+                android:textFontWeight="500"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/apartment_description"
+                android:textSize="22sp"
+                android:lineHeight="39sp"
+                android:textFontWeight="500"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/province"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Amegakure"
+                    android:textSize="21sp"
+                    android:textColor="#d23b05"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="200 Lynx Drive"
+                    android:textSize="18sp"
+                    android:textAlignment="viewEnd"
+                    android:fontFamily="@font/poppins" />
+
+            </LinearLayout>
+
+            <!-- Edit and Delete Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    app:cornerRadius="15dp"
+                    android:backgroundTint="#4CAF50" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Delete"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    app:cornerRadius="15dp"
+                    android:backgroundTint="#FF0000" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

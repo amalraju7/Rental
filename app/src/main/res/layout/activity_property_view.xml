@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PropertyViewActivity">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="fill">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/propertyImage"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/house"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="45dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/availability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/text_shape"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="#FFFFFF"
+                    android:textFontWeight="500"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text="Available" />
+
+                <TextView
+                    android:id="@+id/propertyBeds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="#FF5733"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:text="2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#7B68EE"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500"
+                    android:text=" Beds" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="|" />
+
+                <TextView
+                    android:id="@+id/propertyBaths"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:textColor="#00CED1"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:text="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:textColor="#8A2BE2"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500"
+                    android:layout_marginTop="2dp"
+                    android:text=" Bath" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="|" />
+
+                <TextView
+                    android:id="@+id/propertySquareFoot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:textColor="#FF4500"
+                    android:text="0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:textColor="#32CD32"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:text=" sq.ft" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="|" />
+
+                <TextView
+                    android:id="@+id/propertyType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:textColor="#8B0000"
+                    android:text="Condo" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="25dp">
+
+                <TextView
+                    android:id="@+id/codeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="35dp"
+                    android:text="Barrington Terrace"
+                    android:textFontWeight="500"
+                    android:textSize="35sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:lineHeight="39sp"
+                        android:text="@string/apartment_description"
+                        android:textFontWeight="500"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/province"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
+                        android:text="ON"
+                        android:textColor="#d23b05"
+                        android:textFontWeight="500"
+                        android:textSize="21sp" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins"
+                        android:text="200 Lynx Drive"
+                        android:textAlignment="viewEnd"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addToShortList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="Add to shortlist"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:cornerRadius="15dp"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/removeFromShortList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="Remove from shortlist"
+                android:backgroundTint="#E53935"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:cornerRadius="15dp"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

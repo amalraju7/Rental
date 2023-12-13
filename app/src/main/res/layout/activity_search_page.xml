@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/material_dynamic_primary0"
+    tools:context=".SearchActivity">
+
+<androidx.appcompat.widget.Toolbar
+android:id="@+id/searchToolbar"
+android:layout_width="match_parent"
+android:layout_height="?attr/actionBarSize"
+android:background="#FE709D"
+    />
+
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Search"
+android:layout_marginTop="16dp"
+android:textAlignment="center"
+android:textSize="28sp"
+android:textColor="@color/white"
+
+    />
+
+<LinearLayout
+android:id="@+id/searchLayout"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="20dp"
+android:layout_marginTop="16dp"
+android:layout_marginRight="20dp"
+android:layout_marginBottom="16dp"
+android:background="@drawable/search_shape"
+android:padding="16dp">
+
+<EditText
+    android:id="@+id/searchInput"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:fontFamily="@font/poppins_regular"
+android:textSize="18sp" />
+
+</LinearLayout>
+
+<TextView
+android:id="@+id/showError"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Please ensure the address field is not left blank."
+android:textAlignment="center"
+
+    android:visibility="gone"
+    android:textSize="16sp"
+    android:layout_margin="10dp" />
+
+<com.google.android.material.button.MaterialButton
+android:id="@+id/searchRental"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="20dp"
+android:layout_marginTop="16dp"
+android:layout_marginRight="20dp"
+android:layout_marginBottom="16dp"
+
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:text="SEARCH"
+    android:textColor="@color/white"
+    android:textSize="18sp"
+    app:cornerRadius="8dp" />
+
+<TextView
+android:id="@+id/viewAllListing"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textAlignment="center"
+android:text="View all apartments"
+android:textSize="16sp"
+android:textColor="@color/white"
+android:layout_marginTop="16dp"
+android:layout_marginBottom="16dp" />
+
+    </LinearLayout>

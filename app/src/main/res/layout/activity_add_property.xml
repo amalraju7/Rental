@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F5F5F5"
+    tools:context=".AddNewPropertyActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FE709D" />
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List your rental Property"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:textColor="#333333" />
+
+    <EditText
+        android:id="@+id/etBeds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Beds"
+        android:inputType="number"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etBaths"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Baths"
+        android:inputType="number"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Location" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+           >
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Latitude:"
+
+android:layout_weight="1"
+    ></TextView>
+
+
+            <TextView
+                android:id="@+id/latitude"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+android:layout_weight="1"
+                ></TextView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Longitude:"></TextView>
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                ></TextView>
+
+        </LinearLayout>
+
+
+
+        <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etProvince"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Province"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Postal Code"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etSquareFt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Square ft."
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="Description"
+        android:gravity="top"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF" />
+
+    <Spinner
+        android:id="@+id/spPropertyType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:background="#FFFFFF"
+        android:spinnerMode="dropdown"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/btnAddListing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Add Listing"
+        android:textSize="18sp"
+        android:background="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
+</ScrollView>

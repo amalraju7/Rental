@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/propertyImage"
+            android:layout_width="220dp"
+            android:layout_height="150dp"
+            android:background="@drawable/round"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/house"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/propertyAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$2,150"
+                android:textSize="25sp"
+                android:textFontWeight="500"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/propertyBeds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="#d23b05"
+                    android:textFontWeight="500"
+                    android:text="2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#d23b05"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500"
+                    android:text=" Beds"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="|"
+                    />
+
+                <TextView
+                    android:id="@+id/propertyBaths"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#d23b05"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500"
+                    android:text="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#d23b05"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500"
+                    android:text=" Bath"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="|"/>
+
+                <TextView
+                    android:id="@+id/propertySquareFoot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500"
+                    android:textColor="#d23b05"
+                    android:text="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#d23b05"
+                    android:fontFamily="@font/poppins"
+                    android:textFontWeight="500"
+                    android:text=" sq.ft"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/propertyAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Matonabee North South, East &amp; West"
+                android:fontFamily="@font/poppins"
+                />
+
+
+            <TextView
+                android:id="@+id/propertyProvince"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="Winnipeg"
+                android:textColor="#ff4848"
+                android:fontFamily="@font/poppins"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
