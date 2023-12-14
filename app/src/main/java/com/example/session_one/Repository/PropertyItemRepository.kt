@@ -320,6 +320,62 @@ class PropertyItemRepository(private val context : Context) {
             Log.e(TAG, "retrieveAllProperties: Cannot retrieve Properties without user's email address. You must sign in first.", )
         }
     }
+    fun getallAddedProperty(){
+        try {
+            db.collection(COLLECTION_PROPERTIES)
+                .addSnapshotListener(EventListener { result, error ->
+                    if (error != null) {
+                        Log.e(
+                            TAG,
+                            "allAddedProperty: Listening to properties collection failed due to error : $error",
+                        )
+                        return@EventListener
+                    }
 
+                    if (result != null) {
+                        Log.d(
+                            TAG,
+                            "allAddedProperty: Number of documents retrieved : ${result.size()}"
+                        )
+
+                        val tempList: MutableList<PropertyItem> = ArrayList<PropertyItem>()
+
+                        for (docChanges in result.documentChanges) {
+
+                            val currentDocument: PropertyItem =
+                                docChanges.document.toObject(PropertyItem::class.java)
+                            Log.d(TAG, "allAddedProperty: currentDocument : $currentDocument")
+
+                            when (docChanges.type) {
+                                DocumentChange.Type.ADDED -> {
+                                    //do necessary changes to your local list of objects
+                                    tempList.add(currentDocument)
+                                }
+
+                                DocumentChange.Type.MODIFIED -> {
+
+
+                                }
+
+                                DocumentChange.Type.REMOVED -> {
+
+                                }
+                            }
+                        }//for
+                        Log.d(TAG, "allAddedProperty: tempList : $tempList")
+                        //replace the value in allExpenses
+
+                        allPropertyItems.postValue(tempList)
+
+                    } else {
+                        Log.d(TAG, "allAddedProperty: No data in the result after retrieving")
+                    }
+                })
+
+
+        } catch (ex: java.lang.Exception) {
+            Log.e(TAG, "allAddedProperty: Unable to retrieve all properties : $ex",)
+        }
+    }
 
 }

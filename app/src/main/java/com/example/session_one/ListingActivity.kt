@@ -1,13 +1,16 @@
 package com.example.session_one
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.session_one.Repository.PropertyItemRepository
 
 import com.example.session_one.databinding.ActivityListsBinding
 import com.example.session_one.models.ListingViewAdapter
@@ -18,10 +21,14 @@ class ListingActivity : AppCompatActivity() {
 
     private val gson = Gson()
     private lateinit var binding: ActivityListsBinding;
-    private lateinit var recycler: RecyclerView
+   // private lateinit var recycler: RecyclerView
     private lateinit var sharedPreferences: SharedPreferences
     private var isLoggedIn: Boolean = false
     private val navigationHelper = NavigationHelper()
+    private lateinit var propertyItemRepository: PropertyItemRepository
+    private lateinit var listingAdapter: ListingViewAdapter
+    private lateinit var propertyArrayList: ArrayList<PropertyItem>
+   private lateinit var recyclerView: RecyclerView
 
     private val listing : MutableList<PropertyItem> = mutableListOf(
 
@@ -196,6 +203,8 @@ class ListingActivity : AppCompatActivity() {
 
         this.binding = ActivityListsBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
+        propertyItemRepository = PropertyItemRepository(applicationContext)
+
 
         this.sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
@@ -203,14 +212,32 @@ class ListingActivity : AppCompatActivity() {
 
         this.isLoggedIn = this.sharedPreferences.getString("active_user", "") != ""
 
-        recycler = this.binding.recycler
+        //recycler = this.binding.recycler
+
 
         setSupportActionBar(this.binding.listingToolbar)
+       // propertyArrayList = ArrayList()
+//        listingAdapter = ListingViewAdapter(listing, resources, this.packageName) { item, position ->
+//            navigateToPropertyDetails(item, position)
+//        }
+        recyclerView = binding.recycler
+
+//       val adapter = ListingViewAdapter(listing, resources, this.packageName) { item, position -> navigate("property" , item) }
+//        binding.recycler.setAdapter(adapter)
+//        binding.recycler.layoutManager = LinearLayoutManager(this)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//        recyclerView.adapter = listingAdapter
+
+        propertyArrayList = ArrayList()
+        listingAdapter =  ListingViewAdapter(listing, resources, this.packageName) { item, position ->
+            navigateToPropertyDetails(item, position)
+        }
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = listingAdapter
 
 
-        val adapter = ListingViewAdapter(listing, resources, this.packageName) { item, position -> navigate("property" , item) }
-        binding.recycler.setAdapter(adapter)
-        binding.recycler.layoutManager = LinearLayoutManager(this)
+        //listingAdapter.notifyDataSetChanged()
 
         val searchQuery = intent.getStringExtra("searchQuery")
 
@@ -220,7 +247,7 @@ class ListingActivity : AppCompatActivity() {
 
         } else {
 
-            binding.recycler.adapter = adapter
+            binding.recycler.adapter = listingAdapter
 
         }
 
@@ -242,6 +269,29 @@ class ListingActivity : AppCompatActivity() {
 
 
     override fun onResume() {
+        super.onResume()
+
+        propertyItemRepository.getallAddedProperty()
+        Log.e(TAG, "propertyItemRepository.getallAddedProperty() is called", )
+
+        propertyItemRepository.allPropertyItems.observe(this, androidx.lifecycle.Observer { propertyList ->
+            Log.e(TAG, "  propertyItemRepository.allPropertyItems.observe() is called ${propertyList}", )
+            if(propertyList != null){
+                //clear the existing list to avoid duplicate records
+//                listing.clear()
+//                listing.addAll(propertyArrayList)
+//                listingAdapter.notifyDataSetChanged()
+
+                for (list in listing){
+                    Log.e(TAG, "in for loop of OnResume", )
+                    Log.e(TAG, "onResume: Expense : ${list}", )
+                    if (!listing.contains(list)) {
+                        listing.add(list)
+                        listingAdapter.notifyDataSetChanged()
+                    }
+                }
+            } })
+
         this.sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
         this.isLoggedIn = this.sharedPreferences.getString("active_user", "") != ""
         super.onResume()
@@ -275,6 +325,12 @@ class ListingActivity : AppCompatActivity() {
         if (property != null) intent.putExtra("selectedProperty", gson.toJson(property).toString())
         startActivity(intent)
 
+    }
+    private fun navigateToPropertyDetails(property: PropertyItem?, position:Int) {
+        val intent = Intent(this, PropertyDetailActivity::class.java)
+        intent.putExtra("selectedProperty", Gson().toJson(property))
+        intent.putExtra("selectedPropertyPosition", position)
+        startActivity(intent)
     }
 
 }
