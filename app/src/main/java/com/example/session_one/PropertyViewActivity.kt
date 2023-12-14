@@ -1,10 +1,12 @@
 package com.example.session_one
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
+import com.example.session_one.Repository.PropertyItemRepository
 import com.example.session_one.databinding.ActivityPropertyViewBinding
 import com.example.session_one.models.PropertyItem
 import com.example.session_one.models.User
@@ -20,6 +22,7 @@ class PropertyViewActivity : OnClickListener , AppCompatActivity() {
     private lateinit var userSharedPreferences: SharedPreferences
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var sharedPrefEditor: SharedPreferences.Editor
+    private lateinit var propertyItemRepository: PropertyItemRepository
 
     private lateinit var binding : ActivityPropertyViewBinding
     private lateinit var purpose: String
@@ -41,6 +44,8 @@ class PropertyViewActivity : OnClickListener , AppCompatActivity() {
 
         this.sharedPreferences = getSharedPreferences("FAV_STORE", MODE_PRIVATE)
         this.sharedPrefEditor = this.sharedPreferences.edit()
+
+        this.propertyItemRepository= PropertyItemRepository(applicationContext)
 
         val favouriteListFromSharedPreferences = sharedPreferences.getString("${loggedInUser}_fav_list", "")
         val typeToken = object : TypeToken<List<PropertyItem>>() {}.type
@@ -115,7 +120,7 @@ class PropertyViewActivity : OnClickListener , AppCompatActivity() {
         when (view?.id) {
 
             R.id.addToShortList -> {
-
+                propertyItemRepository.shortlistProperty(property)
                 editableList?.add(property)
                 saveButton.visibility = View.GONE
                 deleteButton.visibility = View.VISIBLE
@@ -123,10 +128,13 @@ class PropertyViewActivity : OnClickListener , AppCompatActivity() {
             }
 
             R.id.removeFromShortList -> {
+                propertyItemRepository.deleteShortlist(property)
 
                 editableList = editableList?.filter { it.id !=  property.id}?.toMutableList()
                 deleteButton.visibility = View.GONE
                 saveButton.visibility = View.VISIBLE
+//                val intent = Intent(this, ShortListActivity::class.java)
+//                startActivity(intent)
 
             }
 

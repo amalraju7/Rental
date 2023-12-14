@@ -1,13 +1,17 @@
 package com.example.session_one
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.session_one.Repository.PropertyItemRepository
 import com.example.session_one.databinding.ActivityShortListBinding
 import com.example.session_one.models.ListingViewAdapter
 import com.example.session_one.models.PropertyItem
@@ -21,6 +25,7 @@ class ShortListActivity : AppCompatActivity() {
     private val navigationHelper = NavigationHelper()
     private var loggedInUser = ""
     private var favouriteList = mutableListOf<PropertyItem>()
+    private lateinit var propertyItemRepository: PropertyItemRepository
 
     private lateinit var userSharedPreferences: SharedPreferences
     private lateinit var sharedPreferences: SharedPreferences
@@ -35,6 +40,7 @@ class ShortListActivity : AppCompatActivity() {
         this.binding = ActivityShortListBinding.inflate(layoutInflater)
 
         setContentView(this.binding.root)
+        this.propertyItemRepository= PropertyItemRepository(applicationContext)
 
         this.userSharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
@@ -75,6 +81,8 @@ class ShortListActivity : AppCompatActivity() {
         this.recycler.adapter = this.adapter
 
 
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -112,28 +120,46 @@ class ShortListActivity : AppCompatActivity() {
 
     override fun onResume() {
 
-        this.sharedPreferences = getSharedPreferences("FAV_STORE", MODE_PRIVATE)
-
-        val favouriteListFromSharedPreferences =
-            sharedPreferences.getString("${loggedInUser}_fav_list", "")
-
-        val typeToken = object : TypeToken<MutableList<PropertyItem>>() {}.type
-
-        this.favouriteList =
-            if (favouriteListFromSharedPreferences?.isEmpty() == true) mutableListOf() else
-                gson.fromJson(favouriteListFromSharedPreferences, typeToken)
-
-        this.adapter = ListingViewAdapter(
-            favouriteList,
-            resources,
-            this.packageName
-        ) { item, pos -> navigate("property", item) }
-
-        this.recycler.adapter = this.adapter
-
-
-
+//        this.sharedPreferences = getSharedPreferences("FAV_STORE", MODE_PRIVATE)
+//
+//        val favouriteListFromSharedPreferences =
+//            sharedPreferences.getString("${loggedInUser}_fav_list", "")
+//
+//        val typeToken = object : TypeToken<MutableList<PropertyItem>>() {}.type
+//
+//        this.favouriteList =
+//            if (favouriteListFromSharedPreferences?.isEmpty() == true) mutableListOf() else
+//                gson.fromJson(favouriteListFromSharedPreferences, typeToken)
+//
+//        this.adapter = ListingViewAdapter(
+//            favouriteList,
+//            resources,
+//            this.packageName
+//        ) { item, pos -> navigate("property", item) }
+//
+//        this.recycler.adapter = this.adapter
         super.onResume()
+        propertyItemRepository.retrieveAllShortlist()
+
+        propertyItemRepository.allPropertyItems.observe(this, androidx.lifecycle.Observer { expenseList ->
+            if(expenseList != null){
+                //clear the existing list to avoid duplicate records
+              favouriteList.clear()
+                //favouriteList.addAll(expenseList)
+               // adapter.notifyDataSetChanged()
+//                Log.e(TAG, "onResume: Expense : ${expenseList}", )
+
+                for (expense in expenseList){
+                    Log.e(TAG, "onResume: Expense : ${expense}", )
+                    if (!favouriteList.contains(expense)) {
+                        favouriteList.add(expense)
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+            } })
+
+
+//        super.onResume()
     }
 
     private fun navigate(purpose: String, property: PropertyItem?) {
