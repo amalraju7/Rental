@@ -11,7 +11,6 @@ import com.example.session_one.models.User
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
 
@@ -74,50 +73,30 @@ class PropertyItemRepository(private val context : Context) {
             data[FIELD_LATITUDE] = newPropertyItem.latitude
             data[FIELD_LONGITUDE] = newPropertyItem.longitude
 
-            //for adding document to nested collection
-//                db.collection(COLLECTION_USERS)
-//                    .document(loggedInUserEmail)
-//                    .collection(COLLECTION_EXPENSES)
-//                    .add(data)
-//                    .addOnSuccessListener { docRef ->
-//                        Log.d(
-//                            TAG,
-//                            "addExpenseToDB: Document successfully added with ID : ${docRef.id}"
-//                        )
-//                    }
-//                    .addOnFailureListener { ex ->
-//                        Log.e(
-//                            TAG,
-//                            "addExpenseToDB: Exception ocurred while adding a document : $ex",
-//                        )
-//                    }
 
             //for adding document to root level collection
             db.collection(COLLECTION_USERS).document(loggedInUserEmail).collection(COLLECTION_PROPERTIES).document(newPropertyItem.id)
                 .set(data)
                 .addOnSuccessListener { docRef ->
-                    Log.d(TAG, "addExpenseToDB: Document successfully added with ID : ${docRef}")
+                    Log.d(TAG, "addPropertyToDB: Document successfully added with ID : ${docRef}")
                 }
                 .addOnFailureListener { ex ->
-                    Log.e(TAG, "addExpenseToDB: Exception ocurred while adding a document : $ex",)
+                    Log.e(TAG, "addPropertyToDB: Exception ocurred while adding a document : $ex",)
                 }
 
-//            db.collection(COLLECTION_EXPENSES)
-//                .document("test1@gmail.com")
-//                .set(data).addOnSuccessListener {  }
-//                .addOnFailureListener{}
+
 
         } catch (ex: java.lang.Exception) {
             Log.d(
                 TAG,
-                "addExpenseToDB: Couldn't perform insert on Expenses collection due to exception $ex"
+                "addPropertyToDB: Couldn't perform insert on Properties collection due to exception $ex"
             )
 
 
         }
     }
 
-    fun retrieveAllExpenses() {
+    fun retrieveAllProperties() {
      if (loggedInUserEmail.isNotEmpty()) {
         try {
             db.collection(COLLECTION_USERS).document(loggedInUserEmail).collection(COLLECTION_PROPERTIES)
@@ -125,7 +104,7 @@ class PropertyItemRepository(private val context : Context) {
                     if (error != null) {
                         Log.e(
                             TAG,
-                            "retrieveAllExpenses: Listening to Expenses collection failed due to error : $error",
+                            "retrieveAllProperties: Listening to Properties collection failed due to error : $error",
                         )
                         return@EventListener
                     }
@@ -133,7 +112,7 @@ class PropertyItemRepository(private val context : Context) {
                     if (result != null) {
                         Log.d(
                             TAG,
-                            "retrieveAllExpenses: Number of documents retrieved : ${result.size()}"
+                            "retrieveAllProperties: Number of documents retrieved : ${result.size()}"
                         )
 
                         val tempList: MutableList<PropertyItem> = ArrayList<PropertyItem>()
@@ -142,7 +121,7 @@ class PropertyItemRepository(private val context : Context) {
 
                             val currentDocument: PropertyItem =
                                 docChanges.document.toObject(PropertyItem::class.java)
-                            Log.d(TAG, "retrieveAllExpenses: currentDocument : $currentDocument")
+                            Log.d(TAG, "retrieveAllProperties: currentDocument : $currentDocument")
 
                             when (docChanges.type) {
                                 DocumentChange.Type.ADDED -> {
@@ -160,69 +139,25 @@ class PropertyItemRepository(private val context : Context) {
                                 }
                             }
                         }//for
-                        Log.d(TAG, "retrieveAllExpenses: tempList : $tempList")
-                        //replace the value in allExpenses
+                        Log.d(TAG, "retrieveAllProperties: tempList : $tempList")
+                        //replace the value in allProperties
 
                         allPropertyItems.postValue(tempList)
 
                     } else {
-                        Log.d(TAG, "retrieveAllExpenses: No data in the result after retrieving")
+                        Log.d(TAG, "retrieveAllProperties: No data in the result after retrieving")
                     }
                 })
 
 
         } catch (ex: java.lang.Exception) {
-            Log.e(TAG, "retrieveAllExpenses: Unable to retrieve all expenses : $ex",)
+            Log.e(TAG, "retrieveAllProperties: Unable to retrieve all Properties : $ex",)
         }
         }else{
-            Log.e(TAG, "retrieveAllExpenses: Cannot retrieve expenses without user's email address. You must sign in first.", )
+            Log.e(TAG, "retrieveAllProperties: Cannot retrieve Properties without user's email address. You must sign in first.", )
         }
     }
 
-//    fun filterExpenses(amount : Double, persons : Int){
-//        if (loggedInUserEmail.isNotEmpty()) {
-//            try{
-//                db.collection(COLLECTION_USERS)
-//                    .document(loggedInUserEmail)
-//                    .collection(COLLECTION_EXPENSES)
-//                    .whereGreaterThan(FIELD_CHECK_AMOUNT, amount)
-//                    .whereLessThan(FIELD_PERSONS, persons)
-//                    .addSnapshotListener(EventListener { result, error ->
-//                        //check for result or errors and update UI accordingly
-//                        if (error != null){
-//                            Log.e(TAG,
-//                                "filterExpenses: Listening to Expenses collection failed due to error : $error", )
-//                            return@EventListener
-//                        }
-//
-//                        if (result != null){
-//                            Log.d(TAG, "filterExpenses: Number of documents retrieved : ${result.size()}")
-//
-//                            val tempList : MutableList<Expense> = ArrayList<Expense>()
-//
-//                            for (docChanges in result.documentChanges){
-//
-//                                val currentDocument : Expense = docChanges.document.toObject(Expense::class.java)
-//                                Log.d(TAG, "filterExpenses: currentDocument : $currentDocument")
-//
-//                                //do necessary changes to your local list of objects
-//                                tempList.add(currentDocument)
-//                            }//for
-//                            Log.d(TAG, "filterExpenses: tempList : $tempList")
-//                            //replace the value in allExpenses
-//                            allPropertyItems.postValue(tempList)
-//
-//                        }else{
-//                            Log.d(TAG, "filterExpenses: No data in the result after retrieving")
-//                        }
-//                    })
-//            }
-//            catch (ex : java.lang.Exception){
-//                Log.e(TAG, "filterExpenses: Unable to filter expenses : $ex", )
-//            }
-//        }
-//    }
-//
     fun updateProperty(propertyToUpdate : PropertyItem){
         val data: MutableMap<String, Any> = HashMap();
 
@@ -245,32 +180,32 @@ class PropertyItemRepository(private val context : Context) {
                 .document(propertyToUpdate.id)
                 .update(data)
                 .addOnSuccessListener { docRef ->
-                    Log.d(TAG, "updateExpense: Document updated successfully : $docRef")
+                    Log.d(TAG, "updateProperty: Document updated successfully : $docRef")
                 }
                 .addOnFailureListener { ex ->
-                    Log.e(TAG, "updateExpense: Failed to update document : $ex", )
+                    Log.e(TAG, "updateProperty: Failed to update document : $ex", )
                 }
         }
         catch (ex : Exception){
-            Log.e(TAG, "updateExpense: Unable to update expense due to exception : $ex", )
+            Log.e(TAG, "updateProperty: Unable to update Property due to exception : $ex", )
         }
     }
 
-    fun deleteExpense(propertyToDelete : PropertyItem?){
+    fun deleteProperty(propertyToDelete : PropertyItem?){
         try{
 
-                db.collection(COLLECTION_PROPERTIES)
+                db.collection(COLLECTION_USERS).document(loggedInUserEmail).collection(COLLECTION_PROPERTIES)
                 .document((propertyToDelete as PropertyItem).id)
                 .delete()
                 .addOnSuccessListener { docRef ->
-                    Log.d(TAG, "updateExpense: Document deleted successfully : $docRef")
+                    Log.d(TAG, "updateProperty: Document deleted successfully : $docRef")
                 }
                 .addOnFailureListener { ex ->
-                    Log.e(TAG, "updateExpense: Failed to delete document : $ex", )
+                    Log.e(TAG, "updateProperty: Failed to delete document : $ex", )
                 }
         }
         catch (ex : Exception){
-            Log.e(TAG, "updateExpense: Unable to delete expense due to exception : $ex", )
+            Log.e(TAG, "updateProperty: Unable to delete Property due to exception : $ex", )
         }
     }
 
@@ -319,14 +254,14 @@ class PropertyItemRepository(private val context : Context) {
                 .document(propertyItem.id)
                 .delete()
                 .addOnSuccessListener { docRef ->
-                    Log.d(TAG, "updateExpense: Document deleted successfully of id: ${propertyItem.id} : $docRef")
+                    Log.d(TAG, "updateProperty: Document deleted successfully of id: ${propertyItem.id} : $docRef")
                 }
                 .addOnFailureListener { ex ->
-                    Log.e(TAG, "updateExpense: Failed to delete document : $ex", )
+                    Log.e(TAG, "updateProperty: Failed to delete document : $ex", )
                 }
         }
         catch (ex : Exception){
-            Log.e(TAG, "updateExpense: Unable to delete expense due to exception : $ex", )
+            Log.e(TAG, "updateProperty: Unable to delete Property due to exception : $ex", )
         }
     }
 
@@ -339,19 +274,19 @@ class PropertyItemRepository(private val context : Context) {
                     .addSnapshotListener(EventListener{ result, error ->
                         if (error != null){
                             Log.e(TAG,
-                                "retrieveAllExpenses: Listening to Expenses collection failed due to error : $error", )
+                                "retrieveAllProperties: Listening to Properties collection failed due to error : $error", )
                             return@EventListener
                         }
 
                         if (result != null){
-                            Log.d(TAG, "retrieveAllExpenses: Number of documents retrieved : ${result.size()}")
+                            Log.d(TAG, "retrieveAllProperties: Number of documents retrieved : ${result.size()}")
 
                             val tempList : MutableList<PropertyItem> = ArrayList<PropertyItem>()
 
                             for (docChanges in result.documentChanges){
 
                                 val currentDocument : PropertyItem = docChanges.document.toObject(PropertyItem::class.java)
-                                Log.d(TAG, "retrieveAllExpenses: currentDocument : $currentDocument")
+                                Log.d(TAG, "retrieveAllProperties: currentDocument : $currentDocument")
 
                                 when(docChanges.type){
                                     DocumentChange.Type.ADDED -> {
@@ -366,23 +301,23 @@ class PropertyItemRepository(private val context : Context) {
                                     }
                                 }
                             }//for
-                            Log.d(TAG, "retrieveAllExpenses: tempList : $tempList")
-                            //replace the value in allExpenses
+                            Log.d(TAG, "retrieveAllProperties: tempList : $tempList")
+                            //replace the value in allProperties
 
                             allPropertyItems.postValue(tempList)
 
                         }else{
-                            Log.d(TAG, "retrieveAllExpenses: No data in the result after retrieving")
+                            Log.d(TAG, "retrieveAllProperties: No data in the result after retrieving")
                         }
                     })
 
 
             }
             catch (ex : java.lang.Exception){
-                Log.e(TAG, "retrieveAllExpenses: Unable to retrieve all expenses : $ex", )
+                Log.e(TAG, "retrieveAllProperties: Unable to retrieve all Properties : $ex", )
             }
         }else{
-            Log.e(TAG, "retrieveAllExpenses: Cannot retrieve expenses without user's email address. You must sign in first.", )
+            Log.e(TAG, "retrieveAllProperties: Cannot retrieve Properties without user's email address. You must sign in first.", )
         }
     }
 

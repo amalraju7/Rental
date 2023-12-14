@@ -69,7 +69,7 @@ class UserRepository(private val context: Context) {
 
             }
             .addOnFailureListener { ex ->
-                Log.e(TAG, "addExpenseToDB: Exception ocurred while adding a document : $ex",)
+                Log.e(TAG, "addPropertyToDB: Exception ocurred while adding a document : $ex",)
             }
     }
 

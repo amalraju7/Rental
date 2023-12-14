@@ -9,7 +9,6 @@ import com.example.session_one.databinding.ActivityDetailBinding
 import com.example.session_one.models.ListingViewAdapter
 import com.example.session_one.models.PropertyItem
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class PropertyDetailActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailBinding
@@ -98,7 +97,7 @@ this.binding.price.setText("$"+property?.amount.toString())
     }
 
     private fun onDeleteButtonClicked(propertyToDelete: PropertyItem?) {
-        propertyItemRepository.deleteExpense(propertyToDelete)
+        propertyItemRepository.deleteProperty(propertyToDelete)
     }
 
 

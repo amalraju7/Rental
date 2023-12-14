@@ -1,6 +1,5 @@
 package com.example.session_one
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +11,6 @@ import com.example.session_one.databinding.ActivityPropertyListBinding
 import com.example.session_one.models.ListingViewAdapter
 import com.example.session_one.models.PropertyItem
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class PropertyListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPropertyListBinding
@@ -50,22 +48,16 @@ class PropertyListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        propertyItemRepository.retrieveAllExpenses()
+        propertyItemRepository.retrieveAllProperties()
 
-        propertyItemRepository.allPropertyItems.observe(this, androidx.lifecycle.Observer { expenseList ->
-            if(expenseList != null){
+        propertyItemRepository.allPropertyItems.observe(this, androidx.lifecycle.Observer { propertyList ->
+            if(propertyList != null){
                 //clear the existing list to avoid duplicate records
                 propertyArrayList.clear()
-                propertyArrayList.addAll(expenseList)
+                propertyArrayList.addAll(propertyList)
                 listingAdapter.notifyDataSetChanged()
 
-//                for (expense in expenseList){
-//                    Log.e(TAG, "onResume: Expense : ${expense}", )
-//                    if (!expenseArrayList.contains(expense)) {
-//                        expenseArrayList.add(expense)
-//                        expenseAdapter.notifyDataSetChanged()
-//                    }
-//                }
+
             } })
     }
 

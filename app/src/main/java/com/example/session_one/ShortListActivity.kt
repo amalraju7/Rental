@@ -141,18 +141,16 @@ class ShortListActivity : AppCompatActivity() {
         super.onResume()
         propertyItemRepository.retrieveAllShortlist()
 
-        propertyItemRepository.allPropertyItems.observe(this, androidx.lifecycle.Observer { expenseList ->
-            if(expenseList != null){
+        propertyItemRepository.allPropertyItems.observe(this, androidx.lifecycle.Observer { propertyList ->
+            if(propertyList != null){
                 //clear the existing list to avoid duplicate records
               favouriteList.clear()
-                //favouriteList.addAll(expenseList)
-               // adapter.notifyDataSetChanged()
-//                Log.e(TAG, "onResume: Expense : ${expenseList}", )
 
-                for (expense in expenseList){
-                    Log.e(TAG, "onResume: Expense : ${expense}", )
-                    if (!favouriteList.contains(expense)) {
-                        favouriteList.add(expense)
+
+                for (property in propertyList){
+                    Log.e(TAG, "onResume: Property : ${property}", )
+                    if (!favouriteList.contains(property)) {
+                        favouriteList.add(property)
                         adapter.notifyDataSetChanged()
                     }
                 }
