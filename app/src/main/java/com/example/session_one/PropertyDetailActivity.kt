@@ -53,8 +53,9 @@ class PropertyDetailActivity : AppCompatActivity() {
 
                 this.binding.province.setText(property?.province.toString())
                 this.binding.address.setText(property?.address.toString())
+                this.binding.propertyType.setText(property?.propertyType.toString())
 
-
+this.binding.price.setText("$"+property?.amount.toString())
                 this.binding.availability.setText(availability)
                 this.binding.codeName.setText(property?.codeName.toString())
 
@@ -62,9 +63,9 @@ class PropertyDetailActivity : AppCompatActivity() {
                 this.binding.propertyBaths.setText(property?.baths.toString())
                 this.binding.propertySquareFoot.setText(property?.squareFoots.toString())
 
-                val descriptionString = resources.getString(R.string.apartment_description)
 
-                this.binding.description.setText("${property?.codeName.toString()}, ${property?.description.toString()}")
+
+                this.binding.description.setText(" ${property?.description.toString()}")
 
 
                 val propertyJson = intent.getStringExtra("selectedProperty")

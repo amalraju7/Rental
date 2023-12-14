@@ -28,34 +28,61 @@
                 android:clipToOutline="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/house" />
-
-            <!-- Property Details -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="45dp"
-                android:paddingBottom="15dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp">
 
-                <TextView
-                    android:id="@+id/availability"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:background="@drawable/text_shape"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="#FFFFFF"
+                >
+
+            <TextView
+                android:id="@+id/availability"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:background="@drawable/text_shape"
+                android:fontFamily="@font/poppins"
+                android:textColor="#FFFFFF"
                 android:textFontWeight="500"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="Available" />
+                android:text="Available"
+                />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></Space>
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="21sp"
+                android:fontFamily="@font/poppins"
+                android:layout_marginTop="2dp"
+                android:textFontWeight="500"
+                android:textColor="#FF4500"
+                android:text="$3000"
+
+                />
+            </LinearLayout>
+
+            <!-- Property Details -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+               android:layout_margin="10dp">
+
+
 
                 <TextView
                     android:id="@+id/propertyBeds"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textSize="21sp"
                     android:fontFamily="@font/poppins"
                     android:textColor="#FF5733"
@@ -64,100 +91,127 @@
                 android:text="2" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textSize="21sp"
                     android:layout_marginTop="2dp"
                     android:textColor="#7B68EE"
                 android:fontFamily="@font/poppins"
                 android:textFontWeight="500"
-                android:text=" Beds" />
+                android:text="Beds" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="2dp"
                     android:paddingBottom="3dp"
-                    android:text="|" />
+                    android:text="" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/propertyBaths"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textSize="21sp"
-                    android:textColor="#00CED1"
+                    android:textColor="#FF4500"
                 android:fontFamily="@font/poppins"
                 android:layout_marginTop="2dp"
                 android:textFontWeight="500"
                 android:text="1" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textSize="21sp"
                     android:textColor="#8A2BE2"
                 android:fontFamily="@font/poppins"
                 android:textFontWeight="500"
                 android:layout_marginTop="2dp"
-                android:text=" Bath" />
+                android:text="Bath" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="2dp"
-                    android:paddingBottom="3dp"
-                    android:text="|" />
 
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
                 <TextView
                     android:id="@+id/propertySquareFoot"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textSize="21sp"
                     android:fontFamily="@font/poppins"
                     android:layout_marginTop="2dp"
                     android:textFontWeight="500"
                     android:textColor="#FF4500"
-                android:text="0" />
+                    android:text="0"
+
+                    />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textSize="21sp"
-                    android:textColor="#32CD32"
-                android:fontFamily="@font/poppins"
-                android:layout_marginTop="2dp"
-                android:textFontWeight="500"
-                android:text=" sq.ft" />
+                    android:textColor="#8A2BE2"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="2dp"
+                    android:textFontWeight="500"
+                    android:text=" sq.ft" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="2dp"
                     android:paddingBottom="3dp"
-                    android:text="|" />
+                    android:text="" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/propertyType"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textSize="21sp"
                     android:fontFamily="@font/poppins"
                     android:layout_marginTop="2dp"
                     android:textFontWeight="500"
                     android:textColor="#8B0000"
-                android:text="Condo" />
+                    android:text="Condo" />
             </LinearLayout>
 
 
             <!-- Code Name -->
             <TextView
-                android:id="@+id/codeName"
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Barrington Terrace"
@@ -195,14 +249,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Amegakure"
+                    android:text="ON"
                     android:textSize="21sp"
                     android:textColor="#d23b05"
                     android:fontFamily="@font/poppins"
                     android:textFontWeight="500" />
 
                 <TextView
-                    android:id="@+id/address"
+                    android:id="@+id/codeName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

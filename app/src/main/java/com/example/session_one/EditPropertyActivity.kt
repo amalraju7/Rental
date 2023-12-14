@@ -18,6 +18,8 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.Serializable
+import java.util.UUID
 
 class EditPropertyActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditPropertyBinding
@@ -62,7 +64,7 @@ class EditPropertyActivity : AppCompatActivity() {
         binding.etBeds.setText(originalProperty.beds.toString())
         binding.etBaths.setText(originalProperty.baths.toString())
         binding.etAddress.setText(originalProperty.address)
-        binding.etProvince.setText(originalProperty.province)
+        binding.etProvince.setText(originalProperty.province.toString())
         binding.etCode.setText(originalProperty.codeName)
         binding.etSquareFt.setText(originalProperty.squareFoots.toString())
         binding.etPrice.setText(originalProperty.amount.toString())
@@ -72,9 +74,11 @@ class EditPropertyActivity : AppCompatActivity() {
         binding.btnUpdate.setOnClickListener {
             val updatedProperty = createUpdatedProperty()
             propertyItemRepository.updateProperty(updatedProperty)
-            val resultIntent = Intent(this,PropertyDetailActivity::class.java)
+            val resultIntent = Intent(this,PropertyListActivity::class.java)
             resultIntent.putExtra("updatedProperty", Gson().toJson(updatedProperty))
+
             setResult(Activity.RESULT_OK, resultIntent)
+            startActivity(resultIntent)
             finish()
 
 
@@ -136,18 +140,13 @@ class EditPropertyActivity : AppCompatActivity() {
             binding.etBaths.text.toString().toInt(),
             binding.etSquareFt.text.toString().toDouble(),
             binding.etAddress.text.toString(),
-            binding.etPrice.text.toString(),
+            binding.etProvince.text.toString(),
             binding.etCode.text.toString(),
             binding.cbAvailable.isChecked,
             binding.latitude.text.toString(),
             binding.longitude.text.toString(),
-
             propertyTypeList[binding.spType.selectedItemPosition],
             binding.etDesc.text.toString()
         )
     }
-
-
-
-
 }

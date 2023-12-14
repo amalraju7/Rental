@@ -53,6 +53,11 @@ class SearchActivity : OnClickListener, AppCompatActivity() {
     override fun onResume() {
         this.sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
         this.isLoggedIn = this.sharedPreferences.getString("active_user", "") != ""
+
+        if (this.isLoggedIn == true) {
+            this.userType = gson.fromJson(this.sharedPreferences.getString("active_user", ""), User::class.java ).userType
+        }
+        invalidateOptionsMenu()
         super.onResume()
     }
 

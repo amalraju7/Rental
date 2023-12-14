@@ -41,7 +41,7 @@ class ListingViewAdapter(
         squareFoot.text = listing[position].squareFoots.toString()
         address.text = listing[position].address
         province.text = listing[position].province
-        amount.text = listing[position].amount
+        amount.text = "$"+listing[position].amount
 
         if ( listing[position].image.isNotEmpty() ) {
 
