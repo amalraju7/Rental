@@ -29,7 +29,7 @@ class ListingActivity : AppCompatActivity() {
 
             image = "image",
 
-            amount = "$7600",
+            amount = "$7100",
 
             beds = 2,
 
@@ -56,7 +56,7 @@ class ListingActivity : AppCompatActivity() {
 
             image = "image",
 
-            amount = "$7600",
+            amount = "$7200",
 
             beds = 2,
 
@@ -83,7 +83,7 @@ class ListingActivity : AppCompatActivity() {
 
             image = "image",
 
-            amount = "$7600",
+            amount = "$7300",
 
             beds = 2,
 
@@ -110,7 +110,7 @@ class ListingActivity : AppCompatActivity() {
 
             image = "image",
 
-            amount = "$7600",
+            amount = "$7400",
 
             beds = 2,
 
@@ -137,7 +137,7 @@ class ListingActivity : AppCompatActivity() {
 
             image = "image",
 
-            amount = "$7600",
+            amount = "$7500",
 
             beds = 2,
 
